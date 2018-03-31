@@ -1,0 +1,55 @@
+<h2>Panel des utilisateurs</h2>
+<h3>Ajouter un client : </h3>
+
+<form action="/client" method="post" name="formAddUser">
+    <table width="25%" border="0">
+        <tr>
+            <td>Nom</td>
+            <td><input type="text" name="nom" id="nom" /></td>
+        </tr>
+        <tr>
+            <td>Prenom</td>
+            <td><input type="text" name="prenom"  /></td>
+        </tr>
+        <tr>
+            <td>Téléphone</td>
+            <td><input type="text" name="tel" /></td>
+        </tr>
+        <tr>
+            <td>Login</td>
+            <td><input type="text" name="login" /></td>
+        </tr>
+        <tr>
+            <td>Mot de passe</td>
+            <td><input type="password" name="mdp" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="Submit" value="Ajouter" /></td>
+        </tr>
+    </table>
+</form>
+
+<h3>Tous les clients : </h3>
+
+<table>
+  <tr>
+    <th> Nom</th>
+    <th> Prenom </th>
+    <th> Téléphone </th>
+    <th> Détails </th>
+    <th> Supprimer </th>
+  </tr>
+  <% results.forEach(function (client) { %>
+  <tr>
+      <td> <%=client.nom%>  </td>
+      <td> <%=client.prenom%></td>
+      <td> <%=client.tel%> </td>
+      <td> <a href="/client/<%=client._id%>">Détails</a>  </td>
+      <td>
+        <form method="POST" action="/client/delete/<%=client._id%>" name="formDeleteUser">
+          <input type="submit" value='DELETE' />
+        </form>
+      </td>
+  </tr>  <% }) %>
+</table>

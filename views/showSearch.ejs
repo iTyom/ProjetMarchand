@@ -1,0 +1,21 @@
+<h2>Page recherche</h2>
+
+<table>
+  <tr>
+    <th> Type</th>
+    <th> Marque</th>
+    <th> Modele </th>
+    <th> Prix </th>
+    <th> Détails </th>
+
+  </tr>
+  <% results.forEach(function (composant) { %>
+  <tr>
+      <td> <%=composant.type%>  </td>
+      <td> <%=composant.marque%>  </td>
+      <td> <%=composant.modele%></td>
+      <td> <%=composant.prix%>€ </td>
+      <td> <a href="/home/<%=composant._id%>">Détails</a></td>
+
+  </tr>  <% }) %>
+</table>

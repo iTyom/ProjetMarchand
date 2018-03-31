@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <th> Marque</th>
+    <th> Modele </th>
+    <th> Note </th>
+    <th>  </th>
+
+
+  </tr>
+  <% results.forEach(function (commandes) { %>
+  <tr>
+      <td> <%=commandes.composant.marque%>  </td>
+      <td> <%=commandes.composant.modele%>  </td>
+      <td> <%=commandes.note%>  </td>
+      <td>
+        <form action="/client/<%=commandes._id%>" method="post" name="formAddNote">
+          <select name="select" id="selectNote">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select><input type="submit" name="Submit" value="Noter" />
+        </form>
+    </td>
+
+  </tr>  <% }) %>
+</table>

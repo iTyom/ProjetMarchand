@@ -1,0 +1,182 @@
+<h2>Composant acheté :</h2>
+
+<table>
+  <tr>
+    <th id="marque"> Marque</th>
+    <th id="modele"> Modele </th>
+    <th id="prix"> Prix </th>
+    <th id="type"> Type </th>
+    <th id="giga"> Giga </th>
+    <th id="ddr"> DDR </th>
+    <th id="cadence"> Cadence </th>
+    <th id="nombreBarrette"> Nombre de barrette </th>
+    <th id="socket"> Socket </th>
+    <th id="format"> Format </th>
+    <th id="modulaire"> Modulaire </th>
+    <th id="puissance"> Puissance </th>
+    <th id="norme"> Norme </th>
+    <th id="frequence"> Fréquence </th>
+    <th id="nombreCoeur"> Nombre de coeur </th>
+
+
+  </tr>
+
+  <tr>
+      <td id="marque2"> <%=results.marque%>  </td>
+      <td id="modele2"> <%=results.modele%></td>
+      <td id="prix2"> <%=results.prix%>€ </td>
+      <td id="type2"> <%=results.type%> </td>
+      <td id="giga2"> <%=results.specification.giga%> </td>
+      <td id="ddr2"> <%=results.specification.ddr%> </td>
+      <td id="cadence2"> <%=results.specification.cadence%> </td>
+      <td id="nombreBarrette2"> <%=results.specification.nombreBarrette%>  </td>
+      <td id="socket2"> <%=results.specification.socket%></td>
+      <td id="format2"> <%=results.specification.format%> </td>
+      <td id="modulaire2"> <%=results.specification.modulaire%> </td>
+      <td id="puissance2"> <%=results.specification.puissance%> </td>
+      <td id="norme2"> <%=results.specification.norme%> </td>
+      <td id="frequence2"> <%=results.specification.frequence%> </td>
+      <td id="nombreCoeur2"> <%=results.specification.nombreCoeur%> </td>
+  </tr>
+</table>
+
+<br />
+<br />
+<br />
+<br />
+<h2>Finalisation de l'achat</h2>
+<p>
+  Simulation de connexion, et choix de la quantité
+</p>
+<form action="/home/acheter/<%=results._id%>" method="POST" name="formAcheter">
+  Login :
+  <input type="text" name="login" id="login" /><br />
+  Quantité :
+  <input type="text" name="quantite" id="quantite" /><br />
+  <input type="submit" value="Finaliser l'achat" />
+
+
+</form>
+<script>
+  if ('<%=results.type%>' === 'RAM') {
+    document.getElementById("puissance").style.display = 'none'
+    document.getElementById("modulaire").style.display = 'none'
+    document.getElementById("norme").style.display = 'none'
+    document.getElementById("nombreCoeur").style.display = 'none'
+    document.getElementById("frequence").style.display = 'none'
+    document.getElementById("giga").style.display = 'table-cell'
+    document.getElementById("ddr").style.display = 'table-cell'
+    document.getElementById("cadence").style.display = 'table-cell'
+    document.getElementById("nombreBarrette").style.display = 'table-cell'
+    document.getElementById("format").style.display = 'none'
+    document.getElementById("socket").style.display = 'none'
+
+    document.getElementById("puissance2").style.display = 'none'
+    document.getElementById("modulaire2").style.display = 'none'
+    document.getElementById("norme2").style.display = 'none'
+    document.getElementById("nombreCoeur2").style.display = 'none'
+    document.getElementById("frequence2").style.display = 'none'
+    document.getElementById("giga2").style.display = 'table-cell'
+    document.getElementById("ddr2").style.display = 'table-cell'
+    document.getElementById("cadence2").style.display = 'table-cell'
+    document.getElementById("nombreBarrette2").style.display = 'table-cell'
+    document.getElementById("format2").style.display = 'none'
+    document.getElementById("socket2").style.display = 'none'
+  } else if ('<%=results.type%>' === 'Carte mère'){
+    document.getElementById("puissance").style.display = 'none'
+    document.getElementById("modulaire").style.display = 'none'
+    document.getElementById("norme").style.display = 'none'
+    document.getElementById("nombreCoeur").style.display = 'none'
+    document.getElementById("nombreBarrette").style.display = 'none'
+    document.getElementById("frequence").style.display = 'none'
+    document.getElementById("ddr").style.display = 'none'
+    document.getElementById("cadence").style.display = 'none'
+    document.getElementById("giga").style.display = 'none'
+    document.getElementById("socket").style.display = 'table-cell'
+    document.getElementById("format").style.display = 'table-cell'
+
+    document.getElementById("puissance2").style.display = 'none'
+    document.getElementById("modulaire2").style.display = 'none'
+    document.getElementById("norme2").style.display = 'none'
+    document.getElementById("nombreCoeur2").style.display = 'none'
+    document.getElementById("nombreBarrette2").style.display = 'none'
+    document.getElementById("frequence2").style.display = 'none'
+    document.getElementById("ddr2").style.display = 'none'
+    document.getElementById("cadence2").style.display = 'none'
+    document.getElementById("giga2").style.display = 'none'
+    document.getElementById("socket2").style.display = 'table-cell'
+    document.getElementById("format2").style.display = 'table-cell'
+  } else if ('<%=results.type%>' === 'Alimentation'){
+    document.getElementById("puissance").style.display = 'table-cell'
+    document.getElementById("modulaire").style.display = 'table-cell'
+    document.getElementById("norme").style.display = 'table-row'
+    document.getElementById("nombreCoeur").style.display = 'none'
+    document.getElementById("nombreBarrette").style.display = 'none'
+    document.getElementById("frequence").style.display = 'none'
+    document.getElementById("ddr").style.display = 'none'
+    document.getElementById("cadence").style.display = 'none'
+    document.getElementById("giga").style.display = 'none'
+    document.getElementById("socket").style.display = 'none'
+    document.getElementById("format").style.display = 'table-cell'
+
+    document.getElementById("puissance2").style.display = 'table-cell'
+    document.getElementById("modulaire2").style.display = 'table-cell'
+    document.getElementById("norme2").style.display = 'table-cell'
+    document.getElementById("nombreCoeur2").style.display = 'none'
+    document.getElementById("nombreBarrette2").style.display = 'none'
+    document.getElementById("frequence2").style.display = 'none'
+    document.getElementById("ddr2").style.display = 'none'
+    document.getElementById("cadence2").style.display = 'none'
+    document.getElementById("giga2").style.display = 'none'
+    document.getElementById("socket2").style.display = 'none'
+    document.getElementById("format2").style.display = 'table-cell'
+  } else if ('<%=results.type%>' === 'Carte graphique'){
+    document.getElementById("puissance").style.display = 'none'
+    document.getElementById("modulaire").style.display = 'none'
+    document.getElementById("norme").style.display = 'none'
+    document.getElementById("nombreCoeur").style.display = 'none'
+    document.getElementById("nombreBarrette").style.display = 'none'
+    document.getElementById("frequence").style.display = 'none'
+    document.getElementById("ddr").style.display = 'none'
+    document.getElementById("giga").style.display = 'table-cell'
+    document.getElementById("socket").style.display = 'none'
+    document.getElementById("cadence").style.display = 'none'
+    document.getElementById("format").style.display = 'none'
+
+    document.getElementById("puissance2").style.display = 'none'
+    document.getElementById("modulaire2").style.display = 'none'
+    document.getElementById("norme2").style.display = 'none'
+    document.getElementById("nombreCoeur2").style.display = 'none'
+    document.getElementById("nombreBarrette2").style.display = 'none'
+    document.getElementById("frequence2").style.display = 'none'
+    document.getElementById("ddr2").style.display = 'none'
+    document.getElementById("giga2").style.display = 'table-cell'
+    document.getElementById("socket2").style.display = 'none'
+    document.getElementById("cadence2").style.display = 'none'
+    document.getElementById("format2").style.display = 'none'
+  } else if ('<%=results.type%>' === 'Processeur'){
+    document.getElementById("puissance").style.display = 'none'
+    document.getElementById("modulaire").style.display = 'none'
+    document.getElementById("norme").style.display = 'none'
+    document.getElementById("nombreCoeur").style.display = 'table-cell'
+    document.getElementById("nombreBarrette").style.display = 'none'
+    document.getElementById("frequence").style.display = 'table-cell'
+    document.getElementById("ddr").style.display = 'none'
+    document.getElementById("giga").style.display = 'none'
+    document.getElementById("socket").style.display = 'table-cell'
+    document.getElementById("format").style.display = 'none'
+    document.getElementById("cadence").style.display = 'none'
+
+    document.getElementById("puissance2").style.display = 'none'
+    document.getElementById("modulaire2").style.display = 'none'
+    document.getElementById("norme2").style.display = 'none'
+    document.getElementById("nombreCoeur2").style.display = 'table-cell'
+    document.getElementById("nombreBarrette2").style.display = 'none'
+    document.getElementById("frequence2").style.display = 'table-cell'
+    document.getElementById("ddr2").style.display = 'none'
+    document.getElementById("giga2").style.display = 'none'
+    document.getElementById("socket2").style.display = 'table-cell'
+    document.getElementById("format2").style.display = 'none'
+    document.getElementById("cadence2").style.display = 'none'
+  }
+</script>

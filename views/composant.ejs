@@ -1,0 +1,184 @@
+<script src="/script/function.js"></script>
+<h2>Panel des composants</h2>
+<h3>Ajouter un composant : </h3>
+<form action="/composant" method="post" name="formAddComposant">
+
+    <table width="25%" border="0">
+        <tr>
+          <td>Type :</td>
+          <td><select name="select" id="selectType" onchange="refreshForm()">
+            <option value="RAM">Mémoire RAM</option>
+            <option value="Carte mère">Carte mère</option>
+            <option value="Alimentation">Alimentation</option>
+            <option value="Carte graphique">Carte graphique</option>
+            <option value="Processeur">Procésseur</option>
+          </select></td>
+        </tr>
+        <tr id="marque">
+            <td>Marque</td>
+            <td><input type="text" name="marque" id="marque" /></td>
+        </tr>
+        <tr id="modele">
+            <td>Modele</td>
+            <td><input type="text" name="modele"  /></td>
+        </tr>
+        <tr id="prix">
+            <td>Prix</td>
+            <td><input type="text" name="prix" /></td>
+        </tr>
+        <tr id="stock">
+            <td>Stock</td>
+            <td><input type="text" name="stock" id="stock" /></td>
+        </tr>
+        <tr>
+          <td>
+            Spécifications :
+          </td>
+        </tr>
+        <tr id="giga">
+            <td>Giga</td>
+            <td><input type="text" name="giga" /></td>
+        </tr>
+        <tr id="ddr">
+            <td>DDR</td>
+            <td><input type="text" name="ddr" /></td>
+        </tr>
+        <tr id="puissance">
+            <td>Puissance</td>
+            <td><input type="text" name="puissance" /></td>
+        </tr>
+        <tr id="modulaire">
+            <td>Modulaire</td>
+            <td><input type="text" name="modulaire" /></td>
+        </tr>
+        <tr id="norme">
+            <td>Norme 80 Plus</td>
+            <td><input type="text" name="norme" /></td>
+        </tr>
+        <tr id="socket">
+            <td>Socket</td>
+            <td><input type="text" name="socket" /></td>
+        </tr>
+        <tr id="format">
+            <td>Format</td>
+            <td><input type="text" name="format" /></td>
+        </tr>
+
+        <tr id="frequence">
+            <td>Fréquence</td>
+            <td><input type="text" name="frequence" /></td>
+        </tr>
+        <tr id="cadence">
+            <td>Cadence</td>
+            <td><input type="text" name="cadence" /></td>
+        </tr>
+        <tr id="nombreCoeur">
+            <td>Nombre de coeur</td>
+            <td><input type="text" name="nombreCoeur" /></td>
+        </tr>
+        <tr id="nombreBarrette">
+            <td>Nombre de barrette</td>
+            <td><input type="text" name="nombreBarrette" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="Submit" value="Ajouter" /></td>
+        </tr>
+    </table>
+</form>
+
+
+<table>
+  <tr>
+    <th> ID</th>
+    <th> Marque</th>
+    <th> Modele </th>
+    <th> Prix </th>
+    <th> Stock </th>
+    <th> Supprimer </th>
+  </tr>
+  <% results.forEach(function (composant) { %>
+  <tr>
+      <td> <%=composant._id%>  </td>
+      <td> <%=composant.marque%>  </td>
+      <td> <%=composant.modele%></td>
+      <td> <%=composant.prix%>€ </td>
+      <td> <%=composant.stock%> </td>
+      <td>
+        <form method="POST" action="/composant/delete/<%=composant._id%>" name="formDeleteComposant">
+          <input type="submit" value='DELETE' />
+        </form>
+      </td>
+  </tr>  <% }) %>
+</table>
+
+
+
+<script>
+function refreshForm() {
+  if (document.getElementById("selectType").value === 'RAM') {
+    document.getElementById("puissance").style.display = 'none'
+    document.getElementById("modulaire").style.display = 'none'
+    document.getElementById("norme").style.display = 'none'
+    document.getElementById("nombreCoeur").style.display = 'none'
+    document.getElementById("frequence").style.display = 'none'
+    document.getElementById("giga").style.display = 'table-row'
+    document.getElementById("ddr").style.display = 'table-row'
+    document.getElementById("cadence").style.display = 'table-row'
+    document.getElementById("nombreBarrette").style.display = 'table-row'
+    document.getElementById("format").style.display = 'none'
+    document.getElementById("socket").style.display = 'none'
+  } else if (document.getElementById("selectType").value === 'Carte mère'){
+    document.getElementById("puissance").style.display = 'none'
+    document.getElementById("modulaire").style.display = 'none'
+    document.getElementById("norme").style.display = 'none'
+    document.getElementById("nombreCoeur").style.display = 'none'
+    document.getElementById("nombreBarrette").style.display = 'none'
+    document.getElementById("frequence").style.display = 'none'
+    document.getElementById("ddr").style.display = 'table-row'
+    document.getElementById("cadence").style.display = 'none'
+    document.getElementById("giga").style.display = 'none'
+    document.getElementById("socket").style.display = 'table-row'
+    document.getElementById("format").style.display = 'table-row'
+  } else if (document.getElementById("selectType").value === 'Alimentation'){
+    document.getElementById("puissance").style.display = 'table-row'
+    document.getElementById("modulaire").style.display = 'table-row'
+    document.getElementById("norme").style.display = 'table-row'
+    document.getElementById("nombreCoeur").style.display = 'none'
+    document.getElementById("nombreBarrette").style.display = 'none'
+    document.getElementById("frequence").style.display = 'none'
+    document.getElementById("ddr").style.display = 'none'
+    document.getElementById("cadence").style.display = 'none'
+    document.getElementById("giga").style.display = 'none'
+    document.getElementById("socket").style.display = 'none'
+    document.getElementById("format").style.display = 'table-row'
+  } else if (document.getElementById("selectType").value === 'Carte graphique'){
+    document.getElementById("puissance").style.display = 'none'
+    document.getElementById("modulaire").style.display = 'none'
+    document.getElementById("norme").style.display = 'none'
+    document.getElementById("nombreCoeur").style.display = 'none'
+    document.getElementById("nombreBarrette").style.display = 'none'
+    document.getElementById("frequence").style.display = 'none'
+    document.getElementById("ddr").style.display = 'none'
+    document.getElementById("giga").style.display = 'table-row'
+    document.getElementById("socket").style.display = 'none'
+    document.getElementById("cadence").style.display = 'none'
+    document.getElementById("format").style.display = 'none'
+  } else if (document.getElementById("selectType").value === 'Processeur'){
+    document.getElementById("puissance").style.display = 'none'
+    document.getElementById("modulaire").style.display = 'none'
+    document.getElementById("norme").style.display = 'none'
+    document.getElementById("nombreCoeur").style.display = 'table-row'
+    document.getElementById("nombreBarrette").style.display = 'none'
+    document.getElementById("frequence").style.display = 'table-row'
+    document.getElementById("ddr").style.display = 'none'
+    document.getElementById("giga").style.display = 'none'
+    document.getElementById("socket").style.display = 'table-row'
+    document.getElementById("format").style.display = 'none'
+    document.getElementById("cadence").style.display = 'none'
+  }
+}
+
+refreshForm();
+
+</script>
